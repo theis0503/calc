@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공학용 계산기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .calculator {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+        }
+
+        .calculator input[type="text"] {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .calculator button {
+            width: 48%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .calculator button.operator {
+            background-color: #f0f0f0;
+            margin-right: 4%;
+        }
+
+        .calculator button.clear {
+            background-color: #ff6666;
+            color: #fff;
+        }
+
+        .calculator button.equals {
+            background-color: #3399ff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <button onclick="clearDisplay()" class="clear">C</button>
+        <button onclick="appendSymbol('/')" class="operator">/</button>
+        <button onclick="appendSymbol('*')" class="operator">*</button>
+        <button onclick="appendSymbol('-')" class="operator">-</button>
+        <button onclick="appendSymbol('+')" class="operator">+</button>
+        <button onclick="appendSymbol('7')">7</button>
+        <button onclick="appendSymbol('8')">8</button>
+        <button onclick="appendSymbol('9')">9</button>
+        <button onclick="appendSymbol('4')">4</button>
+        <button onclick="appendSymbol('5')">5</button>
+        <button onclick="appendSymbol('6')">6</button>
+        <button onclick="appendSymbol('1')">1</button>
+        <button onclick="appendSymbol('2')">2</button>
+        <button onclick="appendSymbol('3')">3</button>
+        <button onclick="appendSymbol('0')">0</button>
+        <button onclick="calculateResult()" class="equals">=</button>
+    </div>
+
+    <script>
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function appendSymbol(symbol) {
+            document.getElementById('display').value += symbol;
+        }
+
+        function calculateResult() {
+            let expression = document.getElementById('display').value;
+            let result = eval(expression);
+            document.getElementById('display').value = result;
+        }
+    </script>
+</body>
+</html>
